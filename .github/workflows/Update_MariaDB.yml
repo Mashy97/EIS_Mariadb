@@ -1,0 +1,22 @@
+name: Update MariaDB
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-database:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install MariaDB client
+      run: sudo apt-get install mariadb-client
+    - name: Run database query
+      env:
+        DB_HOSTNAME: ${{ secrets.DB_HOSTNAME }}
+        DB_PORT: ${{ secrets.DB_PORT }}
+        DB_USERNAME: ${{ secrets.DB_USERNAME }}
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      run: mysql -h $DB_HOSTNAME -P $DB_PORT -u $DB_USERNAME -p$DB_PASSWORD my_database -e "UPDATE my_table SET column1='new_value' WHERE id=123"
