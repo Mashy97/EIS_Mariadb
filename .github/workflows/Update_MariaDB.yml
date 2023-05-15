@@ -28,4 +28,4 @@ jobs:
         DB_PORT: ${{ secrets.DB_PORT }}
         DB_USERNAME: ${{ secrets.DB_USERNAME }}
         DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-      run: mysql -h $DB_HOSTNAME -P $DB_PORT -u $DB_USERNAME -p$DB_PASSWORD my_database -e "UPDATE my_table SET column1='new_value' WHERE id=123"
+      run: mysql -h $DB_HOSTNAME -P $DB_PORT -u $DB_USERNAME -p$DB_PASSWORD eis -e "UPDATE my_table SET column1='new_value' WHERE id=123"
