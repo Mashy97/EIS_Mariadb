@@ -28,4 +28,4 @@ jobs:
         DB_PORT: ${{ secrets.DB_PORT }}
         DB_USERNAME: ${{ secrets.DB_USERNAME }}
         DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-      run: mysql -h $DB_HOSTNAME -P $DB_PORT -u $DB_USERNAME -p$DB_PASSWORD eis -e "INSERT INTO Member (m_email, m_name, m_pw, m_phone) VALUES ('example@example.com', 'example', '1234', '010-1234-5678')"
+      run: mysql -h $DB_HOSTNAME -P $DB_PORT -u $DB_USERNAME -p$DB_PASSWORD eis -e "INSERT INTO MEMBER (m_email, m_name, m_pw, m_phone) VALUES ('example@example.com', 'example', '1234', '010-1234-5678')"
