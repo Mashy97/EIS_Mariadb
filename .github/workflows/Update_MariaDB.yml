@@ -8,9 +8,18 @@ on:
 jobs:
   update-database:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+      with:
+        submodules: recursive
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
     - name: Install MariaDB client
       run: sudo apt-get install mariadb-client
     - name: Run database query
